@@ -21,7 +21,7 @@ const questions = [
     {
         type:"input",
         message:"Please write a short description of your project",
-        name:"Descroption",
+        name:"Description",
     },
     {
         type:"input",
@@ -35,13 +35,13 @@ const questions = [
     },
     {
         type:"input",
-        message:"What cpmman should be run to run tests?",
+        message:"What command should be run to run tests?",
         name:"Run",
     },
     {
         type:"input",
         message:"What does the user need to know about using the repo?",
-        name:"Using",
+        name:"Usage",
     },
     {
         type:"input",
@@ -64,6 +64,11 @@ function writeToFile(fileName, data) {
 
 // function to initialize program
 function init() {
+    inquirer.prompt(questions)
+    .then(function(data) {
+        writeToFile("ReadmeDemo.md",generateMarkdown(data));
+    })
+
 }
 
 // function call to initialize program
